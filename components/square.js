@@ -1,7 +1,16 @@
+import React, { Component } from 'react'
+import { TouchableOpacity, StyleSheet } from 'react-native';
+
 export function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
+    <TouchableOpacity style={styles.square} onPress={props.onPress}>
       {props.value}
-    </button>
+    </TouchableOpacity>
   );  
 }
+
+const styles = StyleSheet.create({
+  square: {
+
+  }
+})

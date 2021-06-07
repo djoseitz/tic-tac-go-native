@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Square} from './square'
 import {calculateWinner} from './game'
+import { View, StyleSheet } from 'react-native';
 
 export class Board extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export class Board extends Component {
     }
   }
   
-  handleClick(i) {
+  handlePress(i) {
     const squares = this.state.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -27,7 +28,7 @@ export class Board extends Component {
     return (
       <Square
         value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)} 
+        onPress={() => this.handlePress(i)} 
       />
     );
   }
@@ -46,28 +47,49 @@ export class Board extends Component {
     }
 
     return (
-      <div>
-        <div className="title">Tic Tac Toe</div>
-        <div className="status">{status}</div>
-        <div className="game-board">
-          <div className="board-row-1">
+      <View>
+        <View style={styles.title}>Tic Tac Go!</View>
+        <View style={styles.status}>{status}</View>
+        <View style={styles.gameBoard}>
+          <View style={styles.boardRow1}>
             {this.renderSquare(0)}
             {this.renderSquare(1)}
             {this.renderSquare(2)}
-          </div>
-          <div className="board-row-2">
+          </View>
+          <View style={styles.boardRow2}>
             {this.renderSquare(3)}
             {this.renderSquare(4)}
             {this.renderSquare(5)}
-          </div>
-          <div className="board-row-3">
+          </View>
+          <View style={styles.boardRow3}>
             {this.renderSquare(6)}
             {this.renderSquare(7)}
             {this.renderSquare(8)}
-          </div>
-        </div>
-        <div className="victory">{victory}</div>
-      </div>
+          </View>
+        </View>
+        <View style={styles.victory}>{victory}</View>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  title: {
+
+  },
+  status: {
+
+  },
+  gameBoard: {
+
+  },
+  boardRow1: {
+
+  },
+  boardRow2: {
+
+  },
+  boardRow3: {
+
+  }
+});
